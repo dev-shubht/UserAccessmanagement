@@ -1,7 +1,7 @@
-import * as jwtDecode from 'jwt-decode';
+import * as jwtDecode from "jwt-decode";
 
 export function getToken() {
-  return localStorage.getItem('token');
+  return localStorage.getItem("token");
 }
 
 export function isAuthenticated() {
@@ -13,9 +13,8 @@ export function getRoleFromToken() {
   if (!token) return null;
   try {
     const decoded = jwtDecode.default(token);
-;
     return decoded.role;
-  } catch (e) {
-    return null;
+  } catch (err) {
+    console.error("Failed to fetch user", err);
   }
 }
